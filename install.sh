@@ -13,6 +13,7 @@ THEMES_DIR="$HOME/.themes"
 ICONS_DIR="$HOME/.icons"
 WALLPAPERS_DIR="$HOME/.local/share/backgrounds/$THEME_NAME"
 XFCE_CONFIG_DIR="$HOME/.config/xfce4"
+XFCE_LOCAL_SHARE_DIR="$HOME/.local/share/xfce4"
 BACKUP_ROOT="$HOME/.config/pastel98-xfce-setup-backups/$TS"
 
 info() { printf '[INFO] %s\n' "$*"; }
@@ -85,6 +86,11 @@ info "Installed wallpaper: $WALLPAPERS_DIR/$WALLPAPER_FILE"
 
 # Install XFCE config snapshot
 copy_merge_tree "$SCRIPT_DIR/config/xfce4" "$XFCE_CONFIG_DIR"
+
+# Install XFCE local-share data (terminal colorschemes, etc.)
+if [[ -d "$SCRIPT_DIR/local-share/xfce4" ]]; then
+  copy_merge_tree "$SCRIPT_DIR/local-share/xfce4" "$XFCE_LOCAL_SHARE_DIR"
+fi
 
 # Rewrite hardcoded wallpaper paths in xfce4-desktop.xml (if present)
 DESKTOP_XML="$XFCE_CONFIG_DIR/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
@@ -160,5 +166,8 @@ info "Theme:   $THEMES_DIR/$THEME_NAME"
 info "Icons:   $ICONS_DIR/$ICON_NAME"
 info "Cursor:  $ICONS_DIR/$CURSOR_NAME"
 info "Wallpaper: $WALLPAPERS_DIR/$WALLPAPER_FILE"
+if [[ -d "$SCRIPT_DIR/local-share/xfce4" ]]; then
+  info "XFCE local data: $XFCE_LOCAL_SHARE_DIR (merged)"
+fi
 info "Backups: $BACKUP_ROOT"
 info "Log out and log back in for all XFCE settings to take full effect."
