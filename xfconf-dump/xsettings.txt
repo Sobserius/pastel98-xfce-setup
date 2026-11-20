@@ -1,0 +1,31 @@
+/Gdk/WindowScalingFactor        1
+/Gtk/ButtonImages               true
+/Gtk/CanChangeAccels            false
+/Gtk/ColorPalette               black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90
+/Gtk/CursorThemeName            retrosmart-xcursor-white
+/Gtk/CursorThemeSize            0
+/Gtk/DecorationLayout           icon,menu:minimize,maximize,close
+/Gtk/DialogsUseHeader           false
+/Gtk/FontName                   Sans 10
+/Gtk/IconSizes                  
+/Gtk/KeyThemeName               
+/Gtk/MenuBarAccel               F10
+/Gtk/MenuImages                 true
+/Gtk/MonospaceFontName          Monospace 10
+/Gtk/TitlebarMiddleClick        lower
+/Net/CursorBlink                true
+/Net/CursorBlinkTime            1200
+/Net/DndDragThreshold           8
+/Net/DoubleClickDistance        5
+/Net/DoubleClickTime            400
+/Net/EnableEventSounds          false
+/Net/EnableInputFeedbackSounds  false
+/Net/IconThemeName              MoePinkIcons
+/Net/SoundThemeName             default
+/Net/ThemeName                  Pastel98
+/Xfce/SyncThemes                true
+/Xft/Antialias                  1
+/Xft/DPI                        96
+/Xft/Hinting                    -1
+/Xft/HintStyle                  hintfull
+/Xft/RGBA                       none

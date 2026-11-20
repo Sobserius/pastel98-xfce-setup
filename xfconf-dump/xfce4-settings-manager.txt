@@ -1,0 +1,2 @@
+/last/window-height  500
+/last/window-width   640

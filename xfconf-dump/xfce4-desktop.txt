@@ -1,0 +1,11 @@
+/backdrop/screen0/monitor0/image-path                 /home/sob/Pictures/f231927664.png
+/backdrop/screen0/monitor0/image-show                 true
+/backdrop/screen0/monitor0/image-style                5
+/backdrop/screen0/monitorDP-1/workspace0/image-style  5
+/backdrop/screen0/monitorDP-1/workspace0/last-image   /home/sob/Pictures/f231927664.png
+/desktop-icons/style                                  0
+/desktop-menu/show                                    true
+/last-settings-migration-version                      1
+/last/window-height                                   516
+/last/window-width                                    652
+/windowlist-menu/show                                 true
