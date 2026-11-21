@@ -7,7 +7,7 @@ TS="$(date +%Y%m%d-%H%M%S)"
 THEME_NAME="Pastel98"
 ICON_NAME="MoePinkIcons"
 CURSOR_NAME="retrosmart-xcursor-white"
-WALLPAPER_FILE="f231927664.png"
+WALLPAPER_FILE="hk.jpg"
 
 THEMES_DIR="$HOME/.themes"
 ICONS_DIR="$HOME/.icons"
@@ -127,6 +127,7 @@ if command -v xfconf-query >/dev/null 2>&1; then
   apply_xfconf xfce4-desktop /backdrop/screen0/monitor0/image-path string "$WALLPAPERS_DIR/$WALLPAPER_FILE"
   apply_xfconf xfce4-desktop /backdrop/screen0/monitor0/last-image string "$WALLPAPERS_DIR/$WALLPAPER_FILE"
   apply_xfconf xfce4-desktop /backdrop/screen0/monitor0/image-show bool true
+  apply_xfconf xfce4-desktop /backdrop/screen0/monitor0/image-style int 2
 
   while IFS= read -r prop; do
     case "$prop" in
@@ -136,8 +137,11 @@ if command -v xfconf-query >/dev/null 2>&1; then
       */image-show)
         xfconf-query -c xfce4-desktop -p "$prop" -s true >/dev/null 2>&1 || true
         ;;
+      */image-style)
+        xfconf-query -c xfce4-desktop -p "$prop" -s 2 >/dev/null 2>&1 || true
+        ;;
     esac
-  done < <(xfconf-query -c xfce4-desktop -l 2>/dev/null | grep -E '/(last-image|image-path|image-show)$' || true)
+  done < <(xfconf-query -c xfce4-desktop -l 2>/dev/null | grep -E '/(last-image|image-path|image-show|image-style)$' || true)
 
   info "xfconf settings applied (best effort)."
 else

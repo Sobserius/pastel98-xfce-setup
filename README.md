@@ -7,7 +7,7 @@ A local snapshot of a Pastel98-themed XFCE desktop setup, including the theme, X
 - `theme/Pastel98/` — XFCE/GTK/window-manager theme (for XFCE4)
 - `icons/MoePinkIcons/` — icon pack used in this setup (MoePink/Moebuntu-style icons)
 - `cursors/retrosmart-xcursor-white/` — cursor theme used (`retrosmart-xcursor-white`)
-- `wallpapers/f231927664.png` — desktop wallpaper
+- `wallpapers/hk.jpg` — desktop wallpaper
 - `config/xfce4/` — XFCE user config snapshot (xfconf channel XML files, panel launcher files, terminal/desktop helper files, keybinds)
 - `local-share/xfce4/terminal/colorschemes/Pastel98.theme` — XFCE Terminal color scheme (Pastel98)
 - `xfconf-dump/` — human-readable dumps of key xfconf channels from this setup
@@ -19,7 +19,7 @@ The included XFCE settings/config cover:
 - **Theme/appearance**: GTK theme `Pastel98`, icon theme `MoePinkIcons`, cursor theme `retrosmart-xcursor-white`
 - **Window manager (xfwm4)**: Pastel98 theme, compositing/shadow-related settings as in this snapshot
 - **Panel (xfce4-panel)**: panel layout, plugins, clock/tasklist/menu settings, and launcher definitions in `config/xfce4/panel/`
-- **Desktop**: wallpaper/background settings (installer rewrites the wallpaper path to the installed location)
+- **Desktop**: wallpaper/background settings (installer rewrites the wallpaper path to the installed location and sets it as tiled)
 - **Keyboard shortcuts**: XFCE keyboard shortcuts snapshot, including custom bindings:
   - **Super** (`Super_L`) → Applications Menu (`xfce4-popup-applicationsmenu`)
   - **Super + Space** → App Finder (`xfce4-appfinder`)
@@ -56,7 +56,7 @@ chmod +x install.sh
 - Installs theme to `~/.themes/Pastel98`
 - Installs icons to `~/.icons/MoePinkIcons`
 - Installs cursor theme to `~/.icons/retrosmart-xcursor-white`
-- Installs wallpaper to `~/.local/share/backgrounds/Pastel98/f231927664.png`
+- Installs wallpaper to `~/.local/share/backgrounds/Pastel98/hk.jpg`
 - Copies/merges XFCE config files from `config/xfce4/` into `~/.config/xfce4/` (with timestamped backups of replaced files/dirs)
 - Copies/merges XFCE local-share data from `local-share/xfce4/` into `~/.local/share/xfce4/` (e.g. terminal colorschemes)
 - Rewrites wallpaper paths in copied `xfce4-desktop.xml` to the installed wallpaper path
@@ -68,7 +68,7 @@ For best results, **log out and log back in** after installation so all XFCE com
 
 1. Copy `theme/Pastel98` to `~/.themes/`
 2. Copy `icons/MoePinkIcons` and `cursors/retrosmart-xcursor-white` to `~/.icons/`
-3. Copy `wallpapers/f231927664.png` to a permanent location (e.g. `~/.local/share/backgrounds/Pastel98/`)
+3. Copy `wallpapers/hk.jpg` to a permanent location (e.g. `~/.local/share/backgrounds/Pastel98/`)
 4. Copy desired files from `config/xfce4/` into `~/.config/xfce4/`
 6. Copy `local-share/xfce4/terminal/colorschemes/Pastel98.theme` into `~/.local/share/xfce4/terminal/colorschemes/`
 7. Set theme/icon/cursor/wallpaper in XFCE Appearance/Desktop Settings (or via `xfconf-query`)
