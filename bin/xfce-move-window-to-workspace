@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+import sys
+from Xlib import X, display, protocol
+from Xlib.error import DisplayError
+
+def main():
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} <workspace-number-1-based>", file=sys.stderr)
+        return 2
+    try:
+        target = int(sys.argv[1]) - 1
+    except ValueError:
+        print("Workspace number must be an integer", file=sys.stderr)
+        return 2
+    if target < 0:
+        return 2
+
+    try:
+        d = display.Display()
+    except DisplayError as e:
+        print(f"Cannot open display: {e}", file=sys.stderr)
+        return 1
+
+    root = d.screen().root
+    NET_CURRENT_DESKTOP = d.intern_atom('_NET_CURRENT_DESKTOP')
+    NET_WM_DESKTOP = d.intern_atom('_NET_WM_DESKTOP')
+    NET_ACTIVE_WINDOW = d.intern_atom('_NET_ACTIVE_WINDOW')
+
+    # Move active window to target workspace
+    aw = root.get_full_property(NET_ACTIVE_WINDOW, X.AnyPropertyType)
+    if aw and aw.value:
+        win_id = int(aw.value[0])
+        if win_id:
+            win = d.create_resource_object('window', win_id)
+            ev = protocol.event.ClientMessage(
+                window=win,
+                client_type=NET_WM_DESKTOP,
+                data=(32, [target, 1, 0, 0, 0])
+            )
+            mask = X.SubstructureRedirectMask | X.SubstructureNotifyMask
+            root.send_event(ev, event_mask=mask)
+            d.flush()
+
+    # Switch to target workspace
+    ev = protocol.event.ClientMessage(
+        window=root,
+        client_type=NET_CURRENT_DESKTOP,
+        data=(32, [target, X.CurrentTime, 0, 0, 0])
+    )
+    mask = X.SubstructureRedirectMask | X.SubstructureNotifyMask
+    root.send_event(ev, event_mask=mask)
+    d.flush()
+    d.close()
+    return 0
+
+if __name__ == '__main__':
+    raise SystemExit(main())

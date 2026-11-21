@@ -9,9 +9,8 @@ A local snapshot of a Pastel98-themed XFCE desktop setup, including the theme, X
 - `cursors/retrosmart-xcursor-white/` — cursor theme used (`retrosmart-xcursor-white`)
 - `wallpapers/f231927664.png` — desktop wallpaper
 - `config/xfce4/` — XFCE user config snapshot (xfconf channel XML files, panel launcher files, terminal/desktop helper files, keybinds)
-- `config/autostart/xpytile.desktop` — XFCE autostart entry for XPytile (session auto-login/start)
-- `config/xpytilerc` — XPytile configuration
-- `bin/xpytile` — XPytile script/binary included for easy install
+- `bin/xfce-switch-workspace` — helper used by Super+1..4 to switch to a workspace
+- `bin/xfce-move-window-to-workspace` — helper used by Super+Alt+1..4 to move focused window to a workspace and follow
 - `local-share/xfce4/terminal/colorschemes/Pastel98.theme` — XFCE Terminal color scheme (Pastel98)
 - `xfconf-dump/` — human-readable dumps of key xfconf channels from this setup
 - `install.sh` — easy installer for applying the setup on another machine
@@ -26,7 +25,9 @@ The included XFCE settings/config cover:
 - **Keyboard shortcuts**: XFCE keyboard shortcuts snapshot, including custom bindings:
   - **Super** (`Super_L`) → Applications Menu (`xfce4-popup-applicationsmenu`)
   - **Super + Space** → App Finder (`xfce4-appfinder`)
-- **XPytile**: tiling helper installed to `~/.local/bin/xpytile`, config at `~/.config/xfce4/xpytilerc`, and autostarted on XFCE session login via `~/.config/autostart/xpytile.desktop`
+  - **Super + 1..4** → Switch to workspace 1..4 (XFCE/xfwm4)
+  - **Super + Alt + 1..4** → Move focused window to workspace 1..4 and switch to it (via `xfce-move-window-to-workspace`)
+- **Workspace helpers**: scripts in `bin/` installed to `~/.local/bin/` for workspace switch/move+follow keybinds
 - **Terminal (xfce4-terminal)**: terminal preferences in `config/xfce4/terminal/terminalrc` and the Pastel98 terminal colorscheme in `local-share/xfce4/terminal/colorschemes/Pastel98.theme`
 - **Other XFCE channels included**: `xsettings`, `xfce4-desktop`, `xfce4-panel`, `xfwm4`, `xfce4-session`, `xfce4-keyboard-shortcuts`, `xfce4-settings-manager`, `xfce4-terminal`, `thunar`, `displays`
 
@@ -38,7 +39,7 @@ The included XFCE settings/config cover:
 - `bash`
 - `xfconf-query` (usually provided by `xfconf`, part of XFCE) for live settings application
 - Common XFCE components for full effect: `xfce4-panel`, `xfwm4`, `xfdesktop`, `xfce4-settings`, `xfce4-terminal`
-- **XPytile dependencies** (for the bundled `bin/xpytile` script): Python 3 and the Python/X11 libraries it requires (commonly `python-xlib`; package names vary by distro)
+- **Workspace helper dependencies**: Python 3 and `python-xlib` (for the bundled workspace helper scripts)
 
 ## Easy install
 
@@ -63,7 +64,7 @@ chmod +x install.sh
 - Installs cursor theme to `~/.icons/retrosmart-xcursor-white`
 - Installs wallpaper to `~/.local/share/backgrounds/Pastel98/f231927664.png`
 - Copies/merges XFCE config files from `config/xfce4/` into `~/.config/xfce4/` (with timestamped backups of replaced files/dirs)
-- Installs XPytile to `~/.local/bin/xpytile`, its config to `~/.config/xfce4/xpytilerc`, and enables session autostart via `~/.config/autostart/xpytile.desktop`
+- Installs workspace helper scripts to `~/.local/bin/` (e.g. `xfce-switch-workspace`, `xfce-move-window-to-workspace`)
 - Copies/merges XFCE local-share data from `local-share/xfce4/` into `~/.local/share/xfce4/` (e.g. terminal colorschemes)
 - Rewrites wallpaper paths in copied `xfce4-desktop.xml` to the installed wallpaper path
 - If running inside XFCE with `xfconf-query` available, applies key theme/icon/cursor/panel/wm/wallpaper settings live and reloads `xfdesktop`, `xfce4-panel`, and `xfwm4`
@@ -76,19 +77,17 @@ For best results, **log out and log back in** after installation so all XFCE com
 2. Copy `icons/MoePinkIcons` and `cursors/retrosmart-xcursor-white` to `~/.icons/`
 3. Copy `wallpapers/f231927664.png` to a permanent location (e.g. `~/.local/share/backgrounds/Pastel98/`)
 4. Copy desired files from `config/xfce4/` into `~/.config/xfce4/`
-5. Copy `config/xpytilerc` to `~/.config/xfce4/xpytilerc`
-6. Copy `bin/xpytile` to `~/.local/bin/xpytile` and make it executable
-7. Copy `config/autostart/xpytile.desktop` to `~/.config/autostart/xpytile.desktop` (and ensure `~/.local/bin` is in your PATH)
-8. Copy `local-share/xfce4/terminal/colorschemes/Pastel98.theme` into `~/.local/share/xfce4/terminal/colorschemes/`
-9. Set theme/icon/cursor/wallpaper in XFCE Appearance/Desktop Settings (or via `xfconf-query`)
-10. Log out/in or restart XFCE components
+5. Copy `bin/xfce-switch-workspace` and `bin/xfce-move-window-to-workspace` to `~/.local/bin/` and make them executable
+6. Ensure `~/.local/bin` is in your PATH (for the workspace helper commands)
+7. Copy `local-share/xfce4/terminal/colorschemes/Pastel98.theme` into `~/.local/share/xfce4/terminal/colorschemes/`
+8. Set theme/icon/cursor/wallpaper in XFCE Appearance/Desktop Settings (or via `xfconf-query`)
+9. Log out/in or restart XFCE components
 
 ## Notes & third-party assets
 
 - This repository packages assets used by this local setup, including **MoePinkIcons** and **Retrosmart cursor** files as found on the source machine. Please check and comply with their respective upstream licenses/terms before redistribution or reuse beyond your own machine.
-- `bin/xpytile` is bundled from the local system (`/usr/bin/xpytile`) and `config/xpytilerc`/`config/autostart/xpytile.desktop` are included for convenience. Verify XPytile’s upstream license/attribution and runtime dependencies before redistribution.
-- The **Super** key binding for the Applications Menu may conflict with XPytile’s default Super-based hotkeys depending on focus/handling; adjust shortcuts in XFCE Keyboard Settings or `config/xpytilerc` if needed.
-- XPytile autostart runs `xpytile` from PATH; ensure `~/.local/bin` is in your session PATH (log out/in after install usually helps).
+- The **Super** key binding for the Applications Menu may conflict with Super-based shortcuts (e.g. workspace bindings) depending on handling; adjust shortcuts in XFCE Keyboard Settings if needed.
+- Workspace bindings here target workspaces 1..4 by default (`Super+1..4` switch workspace, `Super+Alt+1..4` move window and follow). Extend xfconf shortcuts if you use more workspaces.
 - Some panel launcher `.desktop` entries reference standard XFCE/system applications (terminal, file manager, web browser, app finder); availability depends on what is installed on the target system.
 - The original setup was captured from a specific machine/user environment; monitor-specific desktop/wallpaper keys may need adjustment on different display layouts.
 

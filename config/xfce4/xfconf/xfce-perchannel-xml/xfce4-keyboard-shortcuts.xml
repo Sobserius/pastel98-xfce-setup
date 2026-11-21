@@ -62,6 +62,14 @@
       <property name="override" type="bool" value="true"/>
       <property name="Super_L" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Super&gt;space" type="string" value="xfce4-appfinder"/>
+      <property name="&lt;Super&gt;1" type="string" value="/home/sob/.local/bin/xfce-switch-workspace 1"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;1" type="string" value="/home/sob/.local/bin/xfce-move-window-to-workspace 1"/>
+      <property name="&lt;Super&gt;2" type="string" value="/home/sob/.local/bin/xfce-switch-workspace 2"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;2" type="string" value="/home/sob/.local/bin/xfce-move-window-to-workspace 2"/>
+      <property name="&lt;Super&gt;3" type="string" value="/home/sob/.local/bin/xfce-switch-workspace 3"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;3" type="string" value="/home/sob/.local/bin/xfce-move-window-to-workspace 3"/>
+      <property name="&lt;Super&gt;4" type="string" value="/home/sob/.local/bin/xfce-switch-workspace 4"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;4" type="string" value="/home/sob/.local/bin/xfce-move-window-to-workspace 4"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

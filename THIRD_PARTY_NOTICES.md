@@ -4,7 +4,6 @@ This setup package includes third-party assets and utilities copied from the sou
 
 - **MoePinkIcons** (`icons/MoePinkIcons/`) — Moebuntu/MoePink-style icon pack files as provided in this snapshot.
 - **Retrosmart XCursor White** (`cursors/retrosmart-xcursor-white/`) — cursor theme files as provided in this snapshot.
-- **XPytile** (`bin/xpytile`, `config/xpytilerc`, `config/autostart/xpytile.desktop`) — tiling helper script/config/autostart files as provided in this snapshot (bundled from the local system for convenience).
 
 The exact upstream sources, authorship, and license terms for these bundled copies may not be fully documented inside the copied directories. If you plan to redistribute, modify, or publish this package, please verify the original licenses and attribution requirements for these assets/utilities and add appropriate notices.
 
