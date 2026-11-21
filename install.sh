@@ -14,7 +14,6 @@ ICONS_DIR="$HOME/.icons"
 WALLPAPERS_DIR="$HOME/.local/share/backgrounds/$THEME_NAME"
 XFCE_CONFIG_DIR="$HOME/.config/xfce4"
 XFCE_LOCAL_SHARE_DIR="$HOME/.local/share/xfce4"
-LOCAL_BIN_DIR="$HOME/.local/bin"
 BACKUP_ROOT="$HOME/.config/pastel98-xfce-setup-backups/$TS"
 
 info() { printf '[INFO] %s\n' "$*"; }
@@ -70,7 +69,7 @@ require_path "$SCRIPT_DIR/icons/$ICON_NAME"
 require_path "$SCRIPT_DIR/cursors/$CURSOR_NAME"
 require_path "$SCRIPT_DIR/wallpapers/$WALLPAPER_FILE"
 require_path "$SCRIPT_DIR/config/xfce4"
-mkdir -p "$THEMES_DIR" "$ICONS_DIR" "$WALLPAPERS_DIR" "$XFCE_CONFIG_DIR" "$XFCE_LOCAL_SHARE_DIR" "$LOCAL_BIN_DIR" "$BACKUP_ROOT"
+mkdir -p "$THEMES_DIR" "$ICONS_DIR" "$WALLPAPERS_DIR" "$XFCE_CONFIG_DIR" "$XFCE_LOCAL_SHARE_DIR" "$BACKUP_ROOT"
 
 # Install theme, icons, cursor
 copy_replace_dir "$SCRIPT_DIR/theme/$THEME_NAME" "$THEMES_DIR/$THEME_NAME"
@@ -86,18 +85,6 @@ info "Installed wallpaper: $WALLPAPERS_DIR/$WALLPAPER_FILE"
 
 # Install XFCE config snapshot
 copy_merge_tree "$SCRIPT_DIR/config/xfce4" "$XFCE_CONFIG_DIR"
-
-# Install workspace helper scripts (Super+1..4 switch, Super+Alt+1..4 move+follow)
-for helper in xfce-switch-workspace xfce-move-window-to-workspace; do
-  if [[ -f "$SCRIPT_DIR/bin/$helper" ]]; then
-    if [[ -e "$LOCAL_BIN_DIR/$helper" || -L "$LOCAL_BIN_DIR/$helper" ]]; then
-      backup_path "$LOCAL_BIN_DIR/$helper"
-    fi
-    cp -a "$SCRIPT_DIR/bin/$helper" "$LOCAL_BIN_DIR/$helper"
-    chmod +x "$LOCAL_BIN_DIR/$helper"
-    info "Installed: $LOCAL_BIN_DIR/$helper"
-  fi
-done
 
 # Install XFCE local-share data (terminal colorschemes, etc.)
 if [[ -d "$SCRIPT_DIR/local-share/xfce4" ]]; then
@@ -178,12 +165,8 @@ info "Theme:   $THEMES_DIR/$THEME_NAME"
 info "Icons:   $ICONS_DIR/$ICON_NAME"
 info "Cursor:  $ICONS_DIR/$CURSOR_NAME"
 info "Wallpaper: $WALLPAPERS_DIR/$WALLPAPER_FILE"
-if [[ -f "$SCRIPT_DIR/bin/xfce-move-window-to-workspace" || -f "$SCRIPT_DIR/bin/xfce-switch-workspace" ]]; then
-  info "Workspace helpers: installed to $LOCAL_BIN_DIR"
-fi
 if [[ -d "$SCRIPT_DIR/local-share/xfce4" ]]; then
   info "XFCE local data: $XFCE_LOCAL_SHARE_DIR (merged)"
 fi
 info "Backups: $BACKUP_ROOT"
-info "Ensure $LOCAL_BIN_DIR is in PATH (required for workspace helper commands)."
 info "Log out and log back in for all XFCE settings to take full effect."

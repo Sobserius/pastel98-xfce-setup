@@ -4,10 +4,6 @@
 /commands/custom/<Alt>F3                   xfce4-appfinder
 /commands/custom/<Alt>F3/startup-notify    true
 /commands/custom/<Alt>Print                xfce4-screenshooter -w
-/commands/custom/<Alt><Super>1             /home/sob/.local/bin/xfce-move-window-to-workspace 1
-/commands/custom/<Alt><Super>2             /home/sob/.local/bin/xfce-move-window-to-workspace 2
-/commands/custom/<Alt><Super>3             /home/sob/.local/bin/xfce-move-window-to-workspace 3
-/commands/custom/<Alt><Super>4             /home/sob/.local/bin/xfce-move-window-to-workspace 4
 /commands/custom/<Alt><Super>s             orca
 /commands/custom/HomePage                  exo-open --launch WebBrowser
 /commands/custom/override                  true
@@ -20,12 +16,7 @@
 /commands/custom/<Primary><Shift>Escape    xfce4-taskmanager
 /commands/custom/Print                     xfce4-screenshooter
 /commands/custom/<Shift>Print              xfce4-screenshooter -r
-/commands/custom/<Super>1                  /home/sob/.local/bin/xfce-switch-workspace 1
-/commands/custom/<Super>2                  /home/sob/.local/bin/xfce-switch-workspace 2
-/commands/custom/<Super>3                  /home/sob/.local/bin/xfce-switch-workspace 3
-/commands/custom/<Super>4                  /home/sob/.local/bin/xfce-switch-workspace 4
 /commands/custom/<Super>e                  thunar
-/commands/custom/Super_L                   xfce4-popup-applicationsmenu
 /commands/custom/<Super>p                  xfce4-display-settings --minimal
 /commands/custom/<Super>r                  xfce4-appfinder -c
 /commands/custom/<Super>r/startup-notify   true
