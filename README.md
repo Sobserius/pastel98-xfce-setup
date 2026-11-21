@@ -38,7 +38,7 @@ The included XFCE settings/config cover:
 ## Easy install
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/Sobserius/pastel98-xfce-setup.git
 cd pastel98-xfce-setup
 ./install.sh
 ```
@@ -80,13 +80,4 @@ For best results, **log out and log back in** after installation so all XFCE com
 - Some panel launcher `.desktop` entries reference standard XFCE/system applications (terminal, file manager, web browser, app finder); availability depends on what is installed on the target system.
 - The original setup was captured from a specific machine/user environment; monitor-specific desktop/wallpaper keys may need adjustment on different display layouts.
 
-## Repo creation/push (maintainer notes)
 
-If you are publishing this folder as a GitHub repo from your machine:
-
-```bash
-git init
-git add .
-git commit -m "Initial Pastel98 XFCE setup snapshot"
-gh repo create pastel98-xfce-setup --source=. --public --push
-```
