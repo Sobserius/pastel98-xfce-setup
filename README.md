@@ -70,9 +70,9 @@ For best results, **log out and log back in** after installation so all XFCE com
 2. Copy `icons/MoePinkIcons` and `cursors/retrosmart-xcursor-white` to `~/.icons/`
 3. Copy `wallpapers/hk.jpg` to a permanent location (e.g. `~/.local/share/backgrounds/Pastel98/`)
 4. Copy desired files from `config/xfce4/` into `~/.config/xfce4/`
-6. Copy `local-share/xfce4/terminal/colorschemes/Pastel98.theme` into `~/.local/share/xfce4/terminal/colorschemes/`
-7. Set theme/icon/cursor/wallpaper in XFCE Appearance/Desktop Settings (or via `xfconf-query`)
-8. Log out/in or restart XFCE components
+5. Copy `local-share/xfce4/terminal/colorschemes/Pastel98.theme` into `~/.local/share/xfce4/terminal/colorschemes/`
+6. Set theme/icon/cursor/wallpaper in XFCE Appearance/Desktop Settings (or via `xfconf-query`)
+7. Log out/in or restart XFCE components
 
 ## Notes & third-party assets
 
